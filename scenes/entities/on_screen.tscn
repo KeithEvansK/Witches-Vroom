@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://cklh7mapknlui"]
+
+[ext_resource type="Texture2D" uid="uid://crxkhyacrio0y" path="res://images/tileset/Tiny_Tower.png" id="1_w5byo"]
+[ext_resource type="Script" path="res://scenes/entities/btnRestart.gd" id="2_avymm"]
+[ext_resource type="Script" path="res://scenes/entities/JumpButton.gd" id="2_jv8qq"]
+[ext_resource type="Texture2D" uid="uid://xb0tbekrurdk" path="res://images/menuScreen.png" id="2_qqp7v"]
+[ext_resource type="Script" path="res://scenes/entities/BoostButton.gd" id="3_lxjql"]
+[ext_resource type="Script" path="res://scenes/entities/btnExit.gd" id="4_rtp0u"]
+
+[sub_resource type="SystemFont" id="SystemFont_y8fg3"]
+font_names = PackedStringArray("Book Antiqua")
+
+[sub_resource type="SystemFont" id="SystemFont_vfknq"]
+font_names = PackedStringArray("Book Antiqua")
+
+[node name="OnScreen" type="CanvasLayer"]
+
+[node name="CoinOnScreenImage" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(75, 43)
+scale = Vector2(6, 6)
+texture = ExtResource("1_w5byo")
+region_enabled = true
+region_rect = Rect2(272, 96, 16, 16)
+
+[node name="CoinCounter" type="Label" parent="."]
+offset_left = 99.0
+offset_top = 7.0
+offset_right = 134.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 50
+text = "0
+"
+
+[node name="JumpButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+offset_left = 1.0
+offset_top = 134.0
+offset_right = 537.0
+offset_bottom = 661.0
+script = ExtResource("2_jv8qq")
+
+[node name="BoostButton" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+offset_left = 614.0
+offset_top = 128.0
+offset_right = 1150.0
+offset_bottom = 655.0
+script = ExtResource("3_lxjql")
+
+[node name="DeathScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="spriteBackground" type="Sprite2D" parent="DeathScreen"]
+texture_filter = 1
+position = Vector2(588, 326)
+scale = Vector2(10.6447, 10.6447)
+texture = ExtResource("2_qqp7v")
+
+[node name="Label" type="Label" parent="DeathScreen"]
+offset_left = 406.0
+offset_top = 89.0
+offset_right = 795.0
+offset_bottom = 199.0
+theme_override_fonts/font = SubResource("SystemFont_y8fg3")
+theme_override_font_sizes/font_size = 80
+text = "You Died.."
+
+[node name="btnRestart" type="Button" parent="DeathScreen"]
+offset_left = 479.0
+offset_top = 289.0
+offset_right = 667.0
+offset_bottom = 370.0
+theme_override_fonts/font = SubResource("SystemFont_vfknq")
+theme_override_font_sizes/font_size = 40
+text = "RESTART"
+flat = true
+script = ExtResource("2_avymm")
+
+[node name="btnExit" type="Button" parent="DeathScreen"]
+offset_left = 480.0
+offset_top = 501.0
+offset_right = 668.0
+offset_bottom = 582.0
+theme_override_fonts/font = SubResource("SystemFont_vfknq")
+theme_override_font_sizes/font_size = 40
+text = "EXIT"
+flat = true
+script = ExtResource("4_rtp0u")
+
+[node name="DeathScreenCoinOnScreenImage" type="Sprite2D" parent="DeathScreen"]
+texture_filter = 1
+position = Vector2(539, 233)
+scale = Vector2(10, 10)
+texture = ExtResource("1_w5byo")
+region_enabled = true
+region_rect = Rect2(272, 96, 16, 16)
+
+[node name="DeathScreenCoinCounter" type="Label" parent="DeathScreen"]
+offset_left = 581.0
+offset_top = 195.0
+offset_right = 610.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 50
+text = "0
+"
+
+[connection signal="button_down" from="JumpButton" to="JumpButton" method="_on_button_down"]
+[connection signal="pressed" from="JumpButton" to="JumpButton" method="_on_pressed"]
+[connection signal="button_down" from="BoostButton" to="BoostButton" method="_on_button_down"]
+[connection signal="pressed" from="BoostButton" to="BoostButton" method="_on_pressed"]
+[connection signal="pressed" from="DeathScreen/btnRestart" to="DeathScreen/btnRestart" method="_on_pressed"]
+[connection signal="pressed" from="DeathScreen/btnExit" to="DeathScreen/btnExit" method="_on_pressed"]

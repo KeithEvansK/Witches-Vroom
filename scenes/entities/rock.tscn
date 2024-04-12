@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgis2g3m25iwj"]
+
+[ext_resource type="Texture2D" uid="uid://crxkhyacrio0y" path="res://images/tileset/Tiny_Tower.png" id="1_u8ije"]
+[ext_resource type="Script" path="res://scenes/levels/Rock.gd" id="2_dfb64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nh6q"]
+size = Vector2(16.6667, 16.6667)
+
+[sub_resource type="Animation" id="Animation_vmlb6"]
+resource_name = "Break"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 4, 5, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_a6vf0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cskhg"]
+_data = {
+"Break": SubResource("Animation_vmlb6"),
+"RESET": SubResource("Animation_a6vf0")
+}
+
+[node name="Rock" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(6.5, -3.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_u8ije")
+hframes = 3
+vframes = 2
+frame = 3
+region_enabled = true
+region_rect = Rect2(176, 176, 48, 32)
+script = ExtResource("2_dfb64")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.76837e-07, 4.76837e-07)
+shape = SubResource("RectangleShape2D_4nh6q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cskhg")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

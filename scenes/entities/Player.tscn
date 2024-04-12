@@ -1,0 +1,240 @@
+[gd_scene load_steps=19 format=3 uid="uid://vsjj6stcxqi6"]
+
+[ext_resource type="Script" path="res://scenes/entities/Player.gd" id="1_id8yg"]
+[ext_resource type="Texture2D" uid="uid://ba7cl0ky73dx2" path="res://images/tileset/Witch_Tiles.png" id="2_hejp4"]
+[ext_resource type="Texture2D" uid="uid://c4xfdwrbiyary" path="res://images/sprites/brooms/Starter_Broom.png" id="3_a1maa"]
+[ext_resource type="Texture2D" uid="uid://ckg4cps1wq0gt" path="res://images/sprites/star.png" id="3_uvqw7"]
+[ext_resource type="Texture2D" uid="uid://bcwwnnhhheo7w" path="res://images/sprites/skins/Purple_Witch.png" id="4_3n5c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kyrg"]
+size = Vector2(12, 22)
+
+[sub_resource type="Animation" id="Animation_yp16v"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_t16mc"]
+resource_name = "Jump"
+
+[sub_resource type="Animation" id="Animation_idswr"]
+resource_name = "Move"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Broom:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_e4sjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Broom:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skin:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ijjl7"]
+resource_name = "Run"
+length = 0.61
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy32v"]
+_data = {
+"Idle": SubResource("Animation_yp16v"),
+"Jump": SubResource("Animation_t16mc"),
+"Move": SubResource("Animation_idswr"),
+"RESET": SubResource("Animation_e4sjb"),
+"Run": SubResource("Animation_ijjl7")
+}
+
+[sub_resource type="Gradient" id="Gradient_eonn1"]
+offsets = PackedFloat32Array(0, 0.296296, 0.641975, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_on1uh"]
+gradient = SubResource("Gradient_eonn1")
+
+[sub_resource type="Curve" id="Curve_6cgvr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6875, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.505263), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rud6m"]
+curve = SubResource("Curve_6cgvr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oeuec"]
+lifetime_randomness = 0.53
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(400, 200, 1)
+initial_velocity_max = 0.2
+gravity = Vector3(0, -2, 0)
+scale_min = 0.25
+scale_curve = SubResource("CurveTexture_rud6m")
+color_ramp = SubResource("GradientTexture1D_on1uh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wc4ib"]
+lifetime_randomness = 0.04
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 1)
+gravity = Vector3(-1, 1, 0)
+linear_accel_min = -83.87
+linear_accel_max = 83.87
+tangential_accel_min = -29.03
+tangential_accel_max = 41.94
+scale_min = 0.5
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_id8yg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_6kyrg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("2_hejp4")
+hframes = 4
+region_enabled = true
+region_rect = Rect2(112, 0, 128, 32)
+
+[node name="Broom" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_a1maa")
+offset = Vector2(-2, 4)
+hframes = 4
+
+[node name="Skin" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 1)
+texture = ExtResource("4_3n5c0")
+offset = Vector2(0, 3)
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oy32v")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(170, -160)
+zoom = Vector2(3, 3)
+limit_top = 0
+limit_bottom = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_right_margin = 0.41
+
+[node name="BackgroundParticles" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_oeuec")
+texture = ExtResource("3_uvqw7")
+lifetime = 5.0
+metadata/_edit_lock_ = true
+
+[node name="PlayerTrail" type="GPUParticles2D" parent="."]
+position = Vector2(-12, 12)
+process_material = SubResource("ParticleProcessMaterial_wc4ib")
+lifetime = 0.2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = -0.005
+anchor_right = 1.003
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 0.24
+offset_right = 0.543945
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true

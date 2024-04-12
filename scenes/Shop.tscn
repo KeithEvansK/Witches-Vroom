@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://coq8kkuosn6tv"]
+
+[ext_resource type="Texture2D" uid="uid://xb0tbekrurdk" path="res://images/menuScreen.png" id="1_7vw8e"]
+[ext_resource type="Texture2D" uid="uid://c4xfdwrbiyary" path="res://images/sprites/brooms/Starter_Broom.png" id="1_56pp2"]
+[ext_resource type="PackedScene" uid="uid://bq5os8pedtdu" path="res://data/data_manager.tscn" id="1_fn5qe"]
+[ext_resource type="Script" path="res://scenes/BroomViewer.gd" id="2_04ug0"]
+[ext_resource type="Texture2D" uid="uid://bcwwnnhhheo7w" path="res://images/sprites/skins/Purple_Witch.png" id="2_lwr5s"]
+[ext_resource type="Script" path="res://scenes/PlayerViewer.gd" id="3_kd24q"]
+
+[sub_resource type="Animation" id="Animation_n3cma"]
+resource_name = "PlayerViewerMove"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkinViewer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BroomViewer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_autw2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkinViewer:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BroomViewer:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jlqe"]
+_data = {
+"PlayerViewerMove": SubResource("Animation_n3cma"),
+"RESET": SubResource("Animation_autw2")
+}
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="DataManager" parent="." instance=ExtResource("1_fn5qe")]
+
+[node name="PlayerViewerBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(552, 204)
+scale = Vector2(4.09649, 4.09649)
+texture = ExtResource("1_7vw8e")
+
+[node name="PlayerViewer" type="CharacterBody2D" parent="."]
+script = ExtResource("3_kd24q")
+
+[node name="BroomViewer" type="Sprite2D" parent="PlayerViewer"]
+texture_filter = 1
+position = Vector2(559, 196)
+scale = Vector2(6.9, 6.9)
+texture = ExtResource("1_56pp2")
+offset = Vector2(-2, 0)
+hframes = 4
+script = ExtResource("2_04ug0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerViewer/BroomViewer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7jlqe")
+}
+
+[node name="SkinViewer" type="Sprite2D" parent="PlayerViewer"]
+texture_filter = 1
+position = Vector2(559, 196)
+scale = Vector2(6.9, 6.9)
+texture = ExtResource("2_lwr5s")
+hframes = 4
