@@ -1,5 +1,6 @@
 # Witches' Vroom
-![Witches_Vroom_Gif](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/deca958f-3f13-4c70-b53b-8bf1753b0630)
+![witches_vroom_gameplay](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/e21f4723-17c2-4490-aaf0-0a1e4b5555a4)
+
 
 ![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/a83b119a-7314-4d10-a053-da9b073f0646)
 
