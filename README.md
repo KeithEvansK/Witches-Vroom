@@ -11,11 +11,6 @@
 
 
 
-
-
-
-
-
 https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/45a0fd29-4a80-415b-8ec8-27b70e0c7de6
 
 
@@ -68,7 +63,20 @@ The main aspects of the game's design come from player controls, level generatio
 ### Player Controls
 Player controls in Witches' Vroom are handled by the physics engine within Godot 4.0. 
 
+Because of this choice, the player is represented within a 2D physical space with gravity. So to move the player we apply force by making changes to the players X and Y velocity. 
 
+The Y velocity of the player always has a constant force being applied to it each frame which is applying the gravity to it. We only alter this when the player jumps so it is mostly pretty simple. 
+
+The X velocity of the player is messed around with quite a bit more. 
+The first important bit being that if the player ever stops (hits 0 X velocity) they "die" or end the game. This is a quick and easy way to check if the player ever hits a wall or object. The player should always be moving and progressing in this game. 
+
+The X velocity is also slightly increased the more coins the player collects so that the game becomes ever so slightly harder as the game goes on. But there is a cap to this amount so that the player could potentially go on forever. 
+
+The other big component of movement in this game is the dash button. The player gets a quick boost in the forward direction. Allowing them to break through objects and sometimes get themselves out of a point in which the game may end. 
+Most importantly at the start of making this function, you need to check a lot of things. Has the player used the dash too recently? Also checking if they are currently dashing, as they can't do it twice at the same time. 
+Also when using the dash I want the player to move straight in the direction they are headed so I make the Y velocity 0 temporarily to give this effect. 
+
+The player movement is the core of this entire game and required hours of adjustments to get it right and working smoothly. 
 
 ### Level Generation
 The level generation method for this game I learned a long time ago when I created a Flappy Bird game clone. 
