@@ -61,7 +61,7 @@ GDScript is modeled after the Python programming language and is very similar to
 You will see a number of different graphics being used throughout the game. 
 
 The majority of the assets are a combination of premade assets and my own basic image editing skills. 
-The player sprite and the levels come from a great asset pack available on itch.io for creators. 
+The player sprite and the levels come from a great asset pack available on itch.io by [this creator](https://maxence-jacquot.itch.io/) 
 Then I edited things as needed adding:
  - Several new tiles to the tile sheet for the level design
  - Several new frames for objects animation such as the rocks smashing as you pass through them
