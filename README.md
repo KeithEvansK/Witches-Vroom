@@ -22,6 +22,10 @@ https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/45a0fd29-4a80-415b-
 ## About
 Witches' Vroom is a fast paced mobile game where the purpose is to avoid obstacles and collect the coins in the level. 
 
+This is a mobile game I created. 
+Collect the gems and beat your high score! 
+It originally started as a project for the Bigmode game jam and was inspired by other great mobile games like Flappy Bird.
+
 The game features several gameplay mechanics such as:
  - Endless levels
  - Save data between playing
