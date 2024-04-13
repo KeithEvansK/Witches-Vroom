@@ -20,7 +20,7 @@ https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/45a0fd29-4a80-415b-
 
 
 ## About
-Witches' Vroom is a fast paced mobile game where the purpose is to avoid obsticales and collect the coins in the level. 
+Witches' Vroom is a fast paced mobile game where the purpose is to avoid obstacles and collect the coins in the level. 
 
 The game features several gameplay mechanics such as:
  - Endless levels
