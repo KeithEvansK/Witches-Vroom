@@ -7,9 +7,6 @@
 
 </div>
 
-![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/a83b119a-7314-4d10-a053-da9b073f0646)
-
-
 
 https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/45a0fd29-4a80-415b-8ec8-27b70e0c7de6
 
@@ -188,7 +185,7 @@ Throughout development the gameplay of the project changed several times.
 At first the player was going to be able to move both left and right and it was going to be more of a puzzle game. But as details of the project came up, changes were made and I had to pivot directions to stay within the 2 and 1/2 week strict timeframe. 
 
 
-
+![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/a83b119a-7314-4d10-a053-da9b073f0646)
 
 
 
