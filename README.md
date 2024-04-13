@@ -79,6 +79,7 @@ There are a couple of interactive objects coded within the game. These include t
 Both of these objects are made with very similar code. 
 
 ![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/8b15e284-e41f-4be4-bc63-a6aaf8dc41c6)
+
 The cracked rock is made from a rigidbody that has an area2D collison shape around it (in blue) that is checking upon another object entering its zone. 
 When detected, it checks if that object is labeled as a "Player". 
 If so, it allows the player to pass through it and plays its animaiton of being broken until it finishes the animation in which it calls queue_free() and removes the rock from the game. 
@@ -86,6 +87,7 @@ Data is also stored that the player has broken the rock just to keep track for f
 This is a really great simple code for these kinds of object within a game and the code can be reused so you can check it out here: scenes/levels/Rock.gd 
 
 ![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/c7fccffc-aece-43f2-98ed-a0bcd8730ebd)
+
 The coin or gem is very similar to the rock design and works almost the same way. Except we call the players coin_collected() method in which we update the players on screen coin collection amount. 
 
 
