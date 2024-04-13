@@ -70,7 +70,9 @@ Then I edited things as needed adding:
  - Several new tiles to the tile sheet for the level design
  - Several new frames for objects animation such as the rocks smashing as you pass through them
  - Player animation frames
-![Rainbow_Broom](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/52fab0ab-6be4-4ca5-9df6-4749e15b61d5)
+
+![Witch_Tiles](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/b123c5ad-a182-476c-b004-67b537c4c0b8)
+
 
 I also added several skins to the game (Not available on the itch.io Play Now link) that are available to buy using the in game shop with the coins you collect by playing. 
 These include simple skins for the witch and different skins for the broom. Which were originally one sprite but I split them into two to achieve this effect. 
