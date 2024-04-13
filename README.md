@@ -66,11 +66,52 @@ GDScript is modeled after the Python programming language and is very similar to
 The main aspects of the game's design come from player controls, level generation, data read/write, and objects to avoid. 
 
 ### Player Controls
+Player controls in Witches' Vroom are handled by the physics engine within Godot 4.0. 
+
+
 
 ### Level Generation
+The level generation method for this game I learned a long time ago when I created a Flappy Bird game clone. 
+
+Because the level is designed to never end you have a few important things you need. 
+The player obviously to have a position reference point. 
+Then I attach a world generation object to the player and place it a level's length ahead the players position. 
+Anytime the players Y coordinate passes the Y of the world generation object. It will move up the length of one level and create that part of the level.
+
+Doing world generation this way gives the player the illusion of a very large level but actuall there is only a small bit being created as the player moves along. 
+I also take this a step further by randmizing the levels placement so it randomly pulls from a few premade level sections so that it isn't just the same part over and over. 
+
+This method of level generation also can become stressful on the machine running the game because of all the created assets. 
+To avoid this, we also create a garbage collector that trails behind the player as a wall, anything that passes the wall (which is far out of sight) is removed from the game. Ensuring less usage of ram and stress on cpu/gpu. 
+
+Here is a special zoomed out view of the level being generated live as the player is playing for you to better visualize how it is happening. 
+![level_gen](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/b177ff1e-f672-40ae-a022-91d9c7486b9f)
 
 ### Data Read/Write
+Data within the game within the game is primarily used for: 
+ - Saving the amount of coins collected each game run
+ - Saving / Loading the players currently selected skin/broom each time the game starts.
+ - Storing additional data such as how many rocks have been broken or how many coins have the player every collected. This is mainly for an undeveloped idea of achievements or game stats.
 
+Data within Witches' Vroom is stored using a secure object storage system provided by the Godot engine. 
+Allowing me to store a variable like an object and save it to a file. 
+
+The process of saving and loading data is as follows: 
+If there is no save file, I create one. 
+Then I have an object like the one here:
+![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/bdcf4ffb-b9c5-4771-ba31-36b52eee5067)
+
+This object represents a new player who has never played before. 
+Note it has coins collected information, the currently selected skin, and skins owned by the player. 
+
+Using this small amount of data we can customize the experience each time when loading the game to the player that has previously been playing on that save file. 
+
+When the game is started, we load that save file and fill in all of those variable values. 
+
+Then anytime a change is made such as ending a game, we add the coins and save the file. 
+Or the player changes their skin, we save the file. 
+
+Then the rest of the game can reference that object any time it is needed and can ensure the correct data is shown. 
 
 ### Objects
 
