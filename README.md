@@ -60,6 +60,35 @@ For now I'm continuing work on my next game.
 Witches' Vroom is made in the Godot game engine and coded completely with their own GDScript. 
 GDScript is modeled after the Python programming language and is very similar to use. 
 
+### Game Design
+![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/a28b87ba-0956-403f-912e-d18a81e0d795)
+
+The main aspects of the game's design come from player controls, level generation, data read/write, and objects to avoid. 
+
+### Player Controls
+
+### Level Generation
+
+### Data Read/Write
+
+
+### Objects
+
+There are a couple of interactive objects coded within the game. These include the cracked rocks player dash through and the coins collected. 
+
+Both of these objects are made with very similar code. 
+
+![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/8b15e284-e41f-4be4-bc63-a6aaf8dc41c6)
+The cracked rock is made from a rigidbody that has an area2D collison shape around it (in blue) that is checking upon another object entering its zone. 
+When detected, it checks if that object is labeled as a "Player". 
+If so, it allows the player to pass through it and plays its animaiton of being broken until it finishes the animation in which it calls queue_free() and removes the rock from the game. 
+Data is also stored that the player has broken the rock just to keep track for future possible additions like achievements added into the game. 
+This is a really great simple code for these kinds of object within a game and the code can be reused so you can check it out here: scenes/levels/Rock.gd 
+
+![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/c7fccffc-aece-43f2-98ed-a0bcd8730ebd)
+The coin or gem is very similar to the rock design and works almost the same way. Except we call the players coin_collected() method in which we update the players on screen coin collection amount. 
+
+
 
 ## Graphics
 You will see a number of different graphics being used throughout the game. 
@@ -90,10 +119,28 @@ This is achieved by moving the sprite of the witch and broom both up on one fram
 Other animations include:
  - Rock smashing
 
+### Background
+
+The background is mostly just a black background with a particle effect on it giving a mystical feel to the game. 
+If I pick up development of the game again this would be one of the first things I would work on. Adding some kind of subtle trees background. 
+
+The particle effect is actually being kept from the original idea for the game which was more of a dark puzzle game idea.
+
+### Particle Effects
+The particle effect both on the players trail and background are both simple particles that follow the player. 
+To keep them low cost to the machine running the game, because particles can get out of hand if not handled correctly, I make it so the particles only exist for a short time and follow the player. 
+Even the background is actually following the player and only spawn within a distance of the player at any given time. 
+
 ## Gameplay
 Throughout development the gameplay of the project changed several times. 
 
 At first the player was going to be able to move both left and right and it was going to be more of a puzzle game. But as details of the project came up, changes were made and I had to pivot directions to stay within the 2 and 1/2 week strict timeframe. 
 
-## Design
+
+
+
+
+
+
+
 
