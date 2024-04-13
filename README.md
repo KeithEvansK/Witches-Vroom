@@ -2,12 +2,11 @@
 <div align="center">
 
 # > [PLAY NOW IN YOUR BROWSER](https://playatdark.itch.io/witches-vroom) <
-  
+
+  ![witches_vroom_gameplay](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/e21f4723-17c2-4490-aaf0-0a1e4b5555a4)
 
 ![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/a83b119a-7314-4d10-a053-da9b073f0646)
 </div>
-
-![witches_vroom_gameplay](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/e21f4723-17c2-4490-aaf0-0a1e4b5555a4)
 
 
 
