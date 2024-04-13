@@ -89,6 +89,7 @@ This method of level generation also can become stressful on the machine running
 To avoid this, we also create a garbage collector that trails behind the player as a wall, anything that passes the wall (which is far out of sight) is removed from the game. Ensuring less usage of ram and stress on cpu/gpu. 
 
 Here is a special zoomed out view of the level being generated live as the player is playing for you to better visualize how it is happening. 
+
 ![level_gen](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/b177ff1e-f672-40ae-a022-91d9c7486b9f)
 
 ### Data Read/Write
@@ -103,6 +104,7 @@ Allowing me to store a variable like an object and save it to a file.
 The process of saving and loading data is as follows: 
 If there is no save file, I create one. 
 Then I have an object like the one here:
+
 ![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/bdcf4ffb-b9c5-4771-ba31-36b52eee5067)
 
 This object represents a new player who has never played before. 
