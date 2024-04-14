@@ -39,7 +39,7 @@ So after the contest of 2 and 1/2 weeks, I spent about another 2 weeks polishing
 While the project was a great experience and I learned a lot from learning Python, project management, and time management. I will say that the project isn't ready and will likely never be released. 
 
 There are still several things required for this game to fully be ready. 
-Music, audio, sounds, UI improvements, ect.
+Music, audio, sounds, UI improvements, etc.
 
 And truthfully the game isn't the type of game people are playing on mobile these days. The gameplay style is similar to "Flappy Bird" style games just isn't popular in the Android Play Store or the Apple App Store. At least not in 2024. 
 
@@ -64,13 +64,13 @@ Because of this choice, the player is represented within a 2D physical space wit
 The Y velocity of the player always has a constant force being applied to it each frame which is applying the gravity to it. We only alter this when the player jumps so it is mostly pretty simple. 
 
 The X velocity of the player is messed around with quite a bit more. 
-The first important bit being that if the player ever stops (hits 0 X velocity) they "die" or end the game. This is a quick and easy way to check if the player ever hits a wall or object. The player should always be moving and progressing in this game. 
+The first important bit being that if the player ever stops (hits 0 X velocity) they "die" or end the game. This is a quick and easy way to check if the player ever hits a wall or obj. The player should always be moving and progressing in this game. 
 
-The X velocity is also slightly increased the more coins the player collects so that the game becomes ever so slightly harder as the game goes on. But there is a cap to this amount so that the player could potentially go on forever. 
+The X velocity is also slightly increased the more coins the player colls so that the game becomes ever so slightly harder as the game goes on. But there is a cap to this amount so that the player could potentially go on forever. 
 
-The other big component of movement in this game is the dash button. The player gets a quick boost in the forward direction. Allowing them to break through objects and sometimes get themselves out of a point in which the game may end. 
+The other big component of movement in this game is the dash button. The player gets a quick boost in the forward dirion. Allowing them to break through objs and sometimes get themselves out of a point in which the game may end. 
 Most importantly at the start of making this function, you need to check a lot of things. Has the player used the dash too recently? Also checking if they are currently dashing, as they can't do it twice at the same time. 
-Also when using the dash I want the player to move straight in the direction they are headed so I make the Y velocity 0 temporarily to give this effect. 
+Also when using the dash I want the player to move straight in the dirion they are headed so I make the Y velocity 0 temporarily to give this eff. 
 
 The player movement is the core of this entire game and required hours of adjustments to get it right and working smoothly. 
 
@@ -79,11 +79,11 @@ The level generation method for this game I learned a long time ago when I creat
 
 Because the level is designed to never end you have a few important things you need. 
 The player obviously to have a position reference point. 
-Then I attach a world generation object to the player and place it a level's length ahead the players position. 
+Then I attach a world generation obj to the player and place it a level's length ahead the players position. 
 Anytime the players Y coordinate passes the Y of the world generation object. It will move up the length of one level and create that part of the level.
 
 Doing world generation this way gives the player the illusion of a very large level but actuall there is only a small bit being created as the player moves along. 
-I also take this a step further by randmizing the levels placement so it randomly pulls from a few premade level sections so that it isn't just the same part over and over. 
+I also take this a step further by randomizing the levels placement so it randomly pulls from a few premade level sections so that it isn't just the same part over and over. 
 
 This method of level generation also can become stressful on the machine running the game because of all the created assets. 
 To avoid this, we also create a garbage collector that trails behind the player as a wall, anything that passes the wall (which is far out of sight) is removed from the game. Ensuring less usage of ram and stress on cpu/gpu. 
@@ -127,9 +127,9 @@ Both of these objects are made with very similar code.
 
 ![image](https://github.com/KeithEvansK/Witches-Vroom/assets/99915276/8b15e284-e41f-4be4-bc63-a6aaf8dc41c6)
 
-The cracked rock is made from a rigidbody that has an area2D collison shape around it (in blue) that is checking upon another object entering its zone. 
+The cracked rock is made from a rigidbody that has an area2D collision shape around it (in blue) that is checking upon another object entering its zone. 
 When detected, it checks if that object is labeled as a "Player". 
-If so, it allows the player to pass through it and plays its animaiton of being broken until it finishes the animation in which it calls queue_free() and removes the rock from the game. 
+If so, it allows the player to pass through it and plays its animation of being broken until it finishes the animation in which it calls queue_free() and removes the rock from the game. 
 Data is also stored that the player has broken the rock just to keep track for future possible additions like achievements added into the game. 
 This is a really great simple code for these kinds of object within a game and the code can be reused so you can check it out here: scenes/levels/Rock.gd 
 
